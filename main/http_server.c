@@ -57,6 +57,8 @@ extern const uint8_t app_js_start[]					asm("_binary_app_js_start");
 extern const uint8_t app_js_end[]					asm("_binary_app_js_end");
 extern const uint8_t favicon_ico_start[]			asm("_binary_favicon_ico_start");
 extern const uint8_t favicon_ico_end[]				asm("_binary_favicon_ico_end");
+extern const uint8_t sp_icon_png_start[] 				asm("_binary_sp_icon_png_start");
+extern const uint8_t sp_icon_png_end[]   				asm("_binary_sp_icon_png_end");
 
 /**
  * Checks the g_fw_update_status and creates the fw_update_reset timer if g_fw_update_status is true.
@@ -210,6 +212,21 @@ static esp_err_t http_server_favicon_ico_handler(httpd_req_t *req)
 
 	httpd_resp_set_type(req, "image/x-icon");
 	httpd_resp_send(req, (const char *)favicon_ico_start, favicon_ico_end - favicon_ico_start);
+
+	return ESP_OK;
+}
+
+/**
+ * Sends the .png (smartplug_icon) file when accessing the web page.
+ * @param req HTTP request for which the uri needs to be handled.
+ * @return ESP_OK
+ */
+static esp_err_t http_server_sp_icon_handler(httpd_req_t *req)
+{
+	ESP_LOGI(TAG, "sp_icon.png requested");
+
+	httpd_resp_set_type(req, "image/png");
+	httpd_resp_send(req, (const char *)sp_icon_png_start, sp_icon_png_end - sp_icon_png_start);
 
 	return ESP_OK;
 }
@@ -531,6 +548,15 @@ static httpd_handle_t http_server_configure(void)
 				.user_ctx = NULL
 		};
 		httpd_register_uri_handler(http_server_handle, &favicon_ico);
+
+		// register sp_icon.png handler
+		httpd_uri_t sp_icon = {
+				.uri = "/sp_icon.png",
+				.method = HTTP_GET,
+				.handler = http_server_sp_icon_handler,
+				.user_ctx = NULL
+		};
+		httpd_register_uri_handler(http_server_handle, &sp_icon);
 
 		// register OTAupdate handler
 		httpd_uri_t OTA_update = {

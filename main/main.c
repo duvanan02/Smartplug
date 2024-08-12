@@ -6,7 +6,7 @@
  */
 
 #include "nvs_flash.h"
-
+#include "wifi_reset_button.h"
 #include "wifi_app.h"
 
 void app_main(void)
@@ -22,4 +22,7 @@ void app_main(void)
 
 	// Start Wifi
 	wifi_app_start();
+
+	// Configure wifi reset button
+	wifi_reset_button_config();
 }

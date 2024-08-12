@@ -28,6 +28,7 @@ function getFileInfo()
     var file = x.files[0];
 
     document.getElementById("file_info").innerHTML = "<h4>File: " + file.name + "<br>" + "Size: " + file.size + " bytes</h4>";
+	document.getElementById('update_button').style.display = 'inline'; // Show the Update button
 }
 
 /**
@@ -43,7 +44,7 @@ function updateFirmware()
 	{
         var file = fileSelect.files[0];
         formData.set("file", file, file.name);
-        document.getElementById("ota_update_status").innerHTML = "Uploading " + file.name + ", Firmware Update in Progress...";
+        document.getElementById("ota_update_status").innerHTML = "Uploading " + file.name + ', Firmware Update in Progress... <div class="spinner"></div>';
 
         // Http Request
         var request = new XMLHttpRequest();
@@ -101,7 +102,7 @@ function getUpdateStatus()
         } 
         else if (response.ota_update_status == -1)
 		{
-            document.getElementById("ota_update_status").innerHTML = "!!! Upload Error !!!";
+            document.getElementById("ota_update_status").innerHTML = "<h4 class='rd'>!!! Upload Error !!!</h4>";
         }
     }
 }
@@ -111,7 +112,7 @@ function getUpdateStatus()
  */
 function otaRebootTimer() 
 {	
-    document.getElementById("ota_update_status").innerHTML = "OTA Firmware Update Complete. This page will close shortly, Rebooting in: " + seconds;
+	document.getElementById("ota_update_status").innerHTML = "<h4 class='gr'>Firmware Update Complete. This page will close shortly, Rebooting in: " + seconds + "</h4>";
 
     if (--seconds == 0) 
 	{
@@ -150,7 +151,7 @@ function getWifiConnectStatus()
 	{
 		var response = JSON.parse(xhr.responseText);
 		
-		document.getElementById("wifi_connect_status").innerHTML = "Connecting...";
+		document.getElementById("wifi_connect_status").innerHTML = 'Connecting...<div class="spinner"></div>';
 		
 		if (response.wifi_connect_status == 2)
 		{
@@ -171,7 +172,7 @@ function getWifiConnectStatus()
  */
 function startWifiConnectStatusInterval()
 {
-	wifiConnectInterval = setInterval(getWifiConnectStatus, 2800);
+	wifiConnectInterval = setInterval(getWifiConnectStatus, 1000);
 }
 
 /**

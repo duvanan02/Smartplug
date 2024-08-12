@@ -1,60 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<script src='jquery-3.3.1.min.js'></script>
-		<link rel="stylesheet" href="app.css">
-		<script async src="app.js"></script>
-		<title>Smartplug</title>
-		<link rel="icon" href="favicon.ico">
-	</head>
-	<body>
-	<header>
-		<h1>SMARTPLUG</h1>
-	</header>
-		
-	<div id="OTA">
-	<h2>Smartplug Firmware Update</h2>
-		<label id="latest_firmware_label">Latest Firmware: </label>
-		<div id="latest_firmware"></div> 
-		<input type="file" id="selected_file" accept=".bin" style="display: none;" onchange="getFileInfo()" />
-		<div class="buttons">
-			<input type="button" value="Select File" onclick="document.getElementById('selected_file').click();" />
-			<input type="button" value="Update Firmware" onclick="updateFirmware()" />
-		</div>
-		<h4 id="file_info"></h4>	
-		<h4 id="ota_update_status"></h4>
-	</div>
-	<hr>
-	
-	<div id="WifiConnect">
-		<h2>Smartplug Wifi Connect</h2>
-		<section>
-			<input id="connect_ssid" type="text" maxlength="32" placeholder="SSID" value="">
-			<input id="connect_pass" type="password" maxlength="64" placeholder="Password" value="">
-			<input type="checkbox" onclick="showPassword()">Show Password
-		</section>
-		<div class="buttons">
-			<input id="connect_wifi" type="button" value="Connect" />
-		</div>
-		<div id="wifi_connect_credentials_errors"></div>
-		<h4 id="wifi_connect_status"></h4>
-	</div>
+<html lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src='jquery-3.3.1.min.js'></script>
+    <link rel="stylesheet" href="app.css">
+    <script async src="app.js"></script>
+    <title>Smartplug</title>
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <img src="sp_icon.png" alt="Smartplug Icon" id="smartplug-icon">
+        <div class="header-text">
+            <div class="smartplug">SMARTPLUG</div>
+            <div class="tagline">Smart solution for your Home</div>
+        </div>
+    </div>
+</header>
 
-	<div id="ConnectInfo">
-		<section>
-			<div id="connected_ap_label"></div> <div id="connected_ap"></div>
-		</section>
-		<div id="ip_address_label"></div> <div id="wifi_connect_ip"></div>
-		<div id="netmask_label"></div> <div id="wifi_connect_netmask"></div>
-		<div id="gateway_label"></div> <div id="wifi_connect_gw"></div>
-		<div class="buttons">
-			<input id="disconnect_wifi" type="button" value="Disconnect" />
-		</div>
-	</div>
-	<hr>
+<div class="container">
+    <div class="section-box" id="OTA">
+        <h2 class="section-title">Smartplug Firmware Update</h2>
+        <br>
+        <label id="latest_firmware_label">Latest Firmware: <div id="latest_firmware" style="display: inline-block"></div></label>
+        <input type="file" id="selected_file" accept=".bin" style="display: none;" onchange="getFileInfo()" />
+        <div class="buttons">
+            <input type="button" value="Select File" onclick="document.getElementById('selected_file').click();" />
+        </div>
+        <h4 id="file_info"></h4>
+        <div class="buttons">
+            <input type="button" id="update_button" value="Update Firmware" onclick="updateFirmware()" style="display: none;" />
+        </div>
+        <h4 id="ota_update_status"></h4>
+    </div>
+    <hr>
 
-	</body>
-<html>
+    <div class="section-box" id="WifiConnect">
+        <h2 class="section-title">Smartplug WiFi Connect</h2>
+        <br>
+        <section>
+            <input id="connect_ssid" type="text" maxlength="32" placeholder="SSID" value="">
+            <input id="connect_pass" type="password" maxlength="64" placeholder="Password" value="">
+            <div class="show-password-container">
+                <input type="checkbox" id="showPasswordCheckbox" onclick="showPassword()">
+                <label for="showPasswordCheckbox">Show Password</label>
+            </div>
+        </section>
+        <div id="wifi_connect_credentials_errors"></div>
+        <div class="buttons">
+            <input id="connect_wifi" type="button" value="Connect" />
+        </div>
+        <h4 id="wifi_connect_status"></h4>
+        <div id="ConnectInfo">
+            <section>
+                <div class="info-pair">
+                    <div id="connected_ap_label"></div>
+                    <div id="connected_ap"></div>
+                </div>
+            </section>
+            <div class="info-pair">
+                <div id="ip_address_label"></div>
+                <div id="wifi_connect_ip"></div>
+            </div>
+            <div class="info-pair">
+                <div id="netmask_label"></div>
+                <div id="wifi_connect_netmask"></div>
+            </div>
+            <div class="info-pair">
+                <div id="gateway_label"></div>
+                <div id="wifi_connect_gw"></div>
+            </div>
+            <div class="buttons">
+                <input id="disconnect_wifi" type="button" value="Disconnect" style="display: none;"/>
+            </div>
+        </div>        
+    </div>
+
+    
+    <hr>
+
+</div>
+
+</body>
+</html>

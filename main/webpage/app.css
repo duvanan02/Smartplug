@@ -1,118 +1,301 @@
+
 body {
-    background-color: #f1f1f1;
-    font-family: HelveticaNeueRegular, HelveticaNeue-Regular, "Helvetica Neue Regular", HelveticaNeue, "Helvetica Neue", Helvetica, Arial;
-    color: #0272B7;
-}
-
-h1 {
-    display: block;
-    text-align: center;
     margin: 0;
-    padding: 10px;
-    font-size: 1.7em;
-    color: #1d3557;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(to bottom right, #e0f7fa, #80deea); /* Light blue background gradient */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #333;
 }
 
-h2 {
-	font-size: 1.4em;
-    color: #1d3557;
-}
-
-h3 {
-	font-size: 1.2em;
-    color: #1d3557;
-}
-
-h4 {
-	font-size: 1em;
-    color: #1d3557;
-}
-
-.gr {
-    color: green;
-}
-.rd {
+.rd{
     color: red;
 }
 
-#latest_firmware, #latest_firmware_label {
-	display:inline;
-}
-#latest_firmware {
-	color: #1d3557;
-}	
-
-#connected_ap_label, #connected_ap {
-	display:inline;
+.gr{
+    color: green;
 }
 
-#ip_address_label, #netmask_label, #gateway_label {
-	display:inline;
+header {
+    width: 100%;
+    padding: 1px 0;
+    text-align: center;
+    margin-bottom: 20px; /* Space below header */
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
-#wifi_connect_ip, #wifi_connect_netmask, #wifi_connect_gw {
-	display:inline;
+.header-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85); /* White background with transparency */
+    padding: 10px;
+    border-radius: 50px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 40px;
+    background-color: #0288d1; /* Slightly darker blue */
+    padding: 20px;
+    border: 3px solid white; /* White border around the header container */
 }
 
-#connected_ap {
-	color: #1d3557;
+#smartplug-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    animation: slideIn 1s ease-in-out forwards;
 }
 
-#wifi_connect_ip {
-	color: #1d3557;
+.header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards 1s;
 }
 
-#wifi_connect_netmask {
-	color: #1d3557;
+.smartplug {
+    font-size: 1.5em;
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+    line-height: 1;
+    animation: shrinkText 1s ease-in-out forwards 1s;
 }
 
-#wifi_connect_gw {
-	color: #1d3557;
+.tagline {
+    font-size: 1em;
+    margin: 0;
+    color: #e0f7fa;
+    line-height: 1;
+    animation: fadeIn 1s ease-in-out forwards 1s;
 }
 
-#disconnect_wifi {
-	display: none;
+/* Style for section boxes */
+.section-box {
+    border: 2px solid #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Style for section titles */
+.section-title {
+    font-family: 'Inter', sans-serif; /* A refined serif font */
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding-bottom: 2px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+.show-password-container {
+    display: flex;
+    align-items: center;
+    margin-top: 5px; /* Adjust spacing as needed */
+}
+
+#showPasswordCheckbox {
+    margin-right: 8px; /* Space between checkbox and label */
+    transform: scale(1.2); /* Optional: Make the checkbox larger */
+    cursor: pointer;
+}
+
+.show-password-container label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; /* Adjust text size */
+    color: #333; /* Adjust text color */
+    cursor: pointer;
+    margin: 0; /* Ensure no margin is pushing the label up or down */
+    line-height: 1; /* Ensures the text stays vertically centered */
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif; /* Use a modern, elegant font */
+    font-size: 28px;
+    color: #003366; /* A deep blue color */
+    font-weight: 700; /* Make the text bold */
+    text-transform: uppercase; /* Make all letters uppercase for emphasis */
+    letter-spacing: 1px; /* Add some spacing between letters */
+    margin-bottom: 20px; /* Add some space below the title */
+    text-align: left; /* Align text to the left */
+    border-bottom: 2px solid #003366; /* Add a bottom border */
+    padding-bottom: 10px; /* Add some padding below the text */
+}
+
+h4 {
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #555; /* Subtle color for less emphasis */
+    text-align: left;
+}
+label {
+    display: block;
+    font-size: 1em;
+    color: #333; /* Dark color for labels */
+    margin-bottom: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+.container {
+    background-color: rgba(255, 255, 255, 0.95); /* White background with transparency */
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    margin-top: 5px; /* Space above the container */
+}
+
+.container > div {
+    margin-bottom: 20px; /* Space between sections */
+}
+
+input[type="text"], input[type="password"], input[type="file"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1em;
+    background-color: #e0f7fa;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
+    border-color: #0288d1;
+    box-shadow: 0 0 5px rgba(2, 136, 209, 0.5);
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+    color: #999;
+    opacity: 1;
 }
 
 .buttons {
-    padding: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
-input[type="button"] {
-	font-size: 12px;
-	border: 0;
-    line-height: 2;
-    padding: 0 5px;
-    text-align: center;
-    color: #ffffff;
-    text-shadow: 1px 1px 1px #000;
+input[type="button"], button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
     border-radius: 10px;
-    background-color: RGBA(106,125,144,0.35);
-    background-image: linear-gradient(to top left,
-                                      rgba(0, 0, 0, .2),
-                                      rgba(0, 0, 0, .2) 30%,
-                                      rgba(0, 0, 0, 0));
-    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-                inset -2px -2px 3px rgba(0, 0, 0, .6);
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    background-color: #0288d1;
+    color: white;
 }
 
-input[type="button"]:hover {
-    background-color: RGBA(112,164,222,0.68);
+input[type="button"]:hover, button:hover {
+    background-color: #0277bd;
 }
 
-input[type="button"]:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-                inset 2px 2px 3px rgba(0, 0, 0, .6);
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
+/* Styles for the loading spinner */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1); /* Light grey border */
+    border-left: 4px solid #0288d1; /* Blue border */
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px; /* Space between text and spinner */
+}
 
+/* Latest Firmware styling */
+#latest_firmware {
+    display: inline-block;
+    color: #0288d1; /* Professional blue */
+    font-weight: bold;
+    margin-left: 10px; /* Slight space between label and data */
+}
 
+#ConnectInfo {
+    margin-top: 20px;
+}
 
+.info-pair {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
 
+.info-pair div {
+    margin-right: 10px; 
+}
 
+#connected_ap_label, #ip_address_label, #netmask_label, #gateway_label {
+    font-weight: bold;
+    color: #333;
+}
 
+#connected_ap, #wifi_connect_ip, #wifi_connect_netmask, #wifi_connect_gw {
+    font-weight: bold;
+    color: #0288d1;
+}
 
+#ConnectInfo section, #ConnectInfo .info-pair {
+    margin-bottom: 10px;
+}
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
+@keyframes shrinkText {
+    from {
+        font-size: 1.5em;
+    }
+    to {
+        font-size: 1.2em;
+    }
+}
+
+@keyframes showTagline {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

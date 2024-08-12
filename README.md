@@ -1,32 +1,77 @@
-# _Sample project_
+**Hướng dẫn sử dụng source code!**
+## 1. Cài Đặt Visual Studio Code
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+### 1.1. Tải và Cài Đặt VSCode
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+1. Truy cập trang [Visual Studio Code](https://code.visualstudio.com/).
+2. Tải phiên bản phù hợp với hệ điều hành của bạn (Windows, macOS, hoặc Linux).
+3. Cài đặt VSCode theo hướng dẫn trên trang web.
 
+### 1.2. Cài Đặt Các Extension Cần Thiết
 
+Mở VSCode và cài đặt các extension sau:
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+1. **ESP-IDF**: Tìm kiếm và cài đặt "Espressif IDF" từ Marketplace.
+2. **C/C++**: Tìm kiếm và cài đặt "C/C++" từ Microsoft.
+3. **Python**: Tìm kiếm và cài đặt "Python" từ Microsoft.
 
-## Example folder contents
+## 2. Clone Project Từ GitHub
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+### 2.1. Clone Repository
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
+Mở terminal và chạy lệnh sau để clone repository từ GitHub:
 
-Below is short explanation of remaining files in the project folder.
-
+```sh
+git clone https://github.com/duvanan13/Smartplug.git
 ```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
+
+### 2.2. Mở Project Trong VSCode
+
+1. Mở VSCode.
+2. Chọn **File** > **Open Folder**.
+3. Duyệt đến thư mục chứa project bạn vừa clone và mở nó.
+
+## 3. Cài Đặt ESP-IDF
+
+1. Mở VSCode và nhấn `Ctrl+Shift+P` để mở Command Palette.
+2. Gõ `ESP-IDF: Configure ESP-IDF extension` và chọn tùy chọn này.
+3. Làm theo hướng dẫn để cấu hình đường dẫn đến thư mục ESP-IDF và các công cụ liên quan.
+
+## 4. Chạy Project ESP-IDF Trong VSCode
+
+### 4.1. Build và Flash Project
+
+1. Mở terminal trong VSCode (`Ctrl+``).
+2. Config flash memory
+    ```sh
+    idf.py menuconfig
+    ```
+    Tìm tới **Serial flasher config**: thay đổi **Flash size** = 4MB
+    
+3. Config Partition Table
+    ```sh
+    idf.py menuconfig
+    ```
+    Tìm tới **Partition Table**: chọn **Custom partition table CSV** sau đó nhập *partitions_two_ota2.csv*
+    
+4. Chạy lệnh sau để build project:
+
+    ```sh
+    idf.py build
+    ```
+
+5. Chạy lệnh sau để flash project lên thiết bị:
+
+    ```sh
+    idf.py flash
+    ```
+
+### 4.2. Monitor
+
+Để monitor output từ thiết bị, chạy lệnh:
+
+```sh
+idf.py monitor
 ```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+
+Chúc bạn thành công!
